@@ -1,6 +1,7 @@
 import random
 from flask import Flask, request, jsonify
 
+
 def take_exam(tasks):
     answers = {}
     
