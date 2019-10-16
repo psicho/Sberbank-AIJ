@@ -20,19 +20,21 @@ def parseLinkArticles(startLink='http://ege.fipi.ru/os11/xmodules/qprint/index.p
             print(link)
             # str1 = '//*[contains(@class, "question-hyperlink")]/@href'  # '//div[2]/h2/a/@href'
             for test in range(2, 12):
-                str1 = '/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[' + test + ']/tbody/tr/td/table[1]/tbody/tr//td'
-                print(str1)
+                str1 = '/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[' + str(test) + ']/tbody/tr/td/table[1]/tbody/tr/td'
+                # str1 = '/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[3]/tbody/tr/td/table[1]/tbody/tr/td'
+                print(test, str1)
 
 
                 response = requests.get(link)
-                print(response)
+                print('responce', response)
                 pages = html.fromstring(response.text)
-                print(page)
+                print('page', page)
                 news_text = pages.xpath(str1)
+                print('news_text', news_text)
                 # news_text = news_text[:-1]
 
                 tests.append(news_text)
-                print(news_text)
+                # print(news_text)
 
                 # for i in range(len(news_text)):
                 #     news_text[i] = 'https://ru.stackoverflow.com' + news_text[i]
