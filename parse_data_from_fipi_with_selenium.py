@@ -30,12 +30,12 @@ def test_selenium():
         time.sleep(1)
         # driver.get("http://ege.fipi.ru/os11/xmodules/qprint/index.php?theme_guid=aa5e3a609541e311a2f5001fc68344c9&proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&groupno=0")
         time.sleep(3)
-        # alert = driver.switch_to.alert()
-        # alert.close()
-        driver.switch_to.default_content()
-        # driver.switch_to.window()
-        # driver.switch_to.window("Открытый банк заданий ЕГЭ")
+
+        # driver.switch_to.default_content()
+
         driver.switch_to.window(driver.window_handles[len(driver.window_handles) - 1])
+        # driver.switch_to.window(driver.current_window_handle)
+
         driver.get("http://ege.fipi.ru/os11/xmodules/qprint/index.php?theme_guid=aa5e3a609541e311a2f5001fc68344c9&proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&groupno=0")
         time.sleep(3)
 
@@ -45,7 +45,8 @@ def test_selenium():
 
         # driver.get("https://selenium-python.readthedocs.io/locating-elements.html")
         # assert "Python" in driver.title
-        text = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[0]/tbody/tr/td/table[1]/tbody/tr//td")
+        # text = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[0]/tbody/tr/td/table[1]/tbody/tr//td")
+        text = driver.find_element_by_xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[2]/tbody/tr/td/table[1]/tbody/tr/td/form[1]/table/tbody/tr[1]/td/p/i")
         # text = driver.find_element_by_xpath('//*[@id="locating-by-xpath"]/ol[1]/li[2]/text()')
         # elem = driver.find_element(By.XPATH, '/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[0]/tbody/tr/td/table[1]/tbody/tr//td')
         print(text.text)
