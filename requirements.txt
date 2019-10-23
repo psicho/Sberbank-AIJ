@@ -12,3 +12,4 @@ simplejson
 six
 oauth2client
 FacebookGraph
+selenium
