@@ -9,15 +9,6 @@ from lxml import html
 def test_selenium():
     from selenium import webdriver
 
-    # ua = UserAgent()
-    # profile = webdriver.FirefoxProfile()
-    # # profile.set_preference("general.useragent.override", "[user-agent string]")
-    # # Below is tested line
-    # profile.set_preference("general.useragent.override", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:63.0) Gecko/20100101 Firefox/63.0")
-    # driver = webdriver.Firefox(profile)
-    # agent = driver.execute_script("return navigator.userAgent")
-    # print(agent)
-
     # Драйвер FireFox
     profile = webdriver.FirefoxProfile()
     profile.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36")
@@ -31,7 +22,6 @@ def test_selenium():
 
     try:
 
-
         driver.get("http://fipi.ru/")
         driver.get("http://www.fipi.ru/content/otkrytyy-bank-zadaniy-ege")
         button = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div[2]/div/div[3]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/p[1]/a/span/strong')
@@ -41,13 +31,17 @@ def test_selenium():
         # driver.get("http://ege.fipi.ru/os11/xmodules/qprint/index.php?theme_guid=aa5e3a609541e311a2f5001fc68344c9&proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&groupno=0")
         time.sleep(3)
         # alert = driver.switch_to.alert()
-        # driver.switch_to.default_content()
+        # alert.close()
+        driver.switch_to.default_content()
         # driver.switch_to.window()
+        # driver.switch_to.window("Открытый банк заданий ЕГЭ")
+        driver.switch_to.window(driver.window_handles[len(driver.window_handles) - 1])
         driver.get("http://ege.fipi.ru/os11/xmodules/qprint/index.php?theme_guid=aa5e3a609541e311a2f5001fc68344c9&proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&groupno=0")
         time.sleep(3)
 
         button = driver.find_element_by_xpath('/html/body/table/tbody/tr[2]/td[1]/div/div[2]/a')
         button.click()
+        time.sleep(3)
 
         # driver.get("https://selenium-python.readthedocs.io/locating-elements.html")
         # assert "Python" in driver.title
@@ -57,7 +51,8 @@ def test_selenium():
         print(text.text)
     except:
         pass
-    driver.close()
+
+    # driver.close()
 
 # Формируем массив ссылок для парсинга выбранной категории
 # http://ege.fipi.ru/os11/xmodules/qprint/index.php?proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&theme_guid=aa5e3a609541e311a2f5001fc68344c9&groupno=1&groupno=2
