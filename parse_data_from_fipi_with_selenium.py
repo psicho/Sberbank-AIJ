@@ -5,6 +5,7 @@ from selenium import webdriver
 import time
 from fake_useragent import UserAgent
 from lxml import html
+from selenium import webdriver
 
 def test_selenium():
     from selenium import webdriver
@@ -58,6 +59,12 @@ def test_selenium():
 # Формируем массив ссылок для парсинга выбранной категории
 # http://ege.fipi.ru/os11/xmodules/qprint/index.php?proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&theme_guid=aa5e3a609541e311a2f5001fc68344c9&groupno=1&groupno=2
 def parseLinkArticles(startLink='http://ege.fipi.ru/os11/xmodules/qprint/index.php?theme_guid=aa5e3a609541e311a2f5001fc68344c9&proj_guid=AF0ED3F2557F8FFC4C06F80B6803FD26&groupno=', pages=1000000):
+
+    # Драйвер FireFox
+    profile = webdriver.FirefoxProfile()
+    profile.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36")
+    driver = webdriver.Firefox(profile)
+
     tests = []
     # for page in range(0, pages + 1):
     for page in range(1, 2):
