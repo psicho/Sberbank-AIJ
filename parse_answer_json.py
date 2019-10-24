@@ -48,6 +48,13 @@ def sort_to_category(path_files='example/tests'):
     print('matching["tasks"]', len(matching["tasks"]), 'шт.')
     print('other["tasks"]', len(other["tasks"]), 'шт.')
 
+    json.dump(text, open("tests/text.json", "w"), ensure_ascii=False)
+    json.dump(choice, open("tests/choice.json", "w"), ensure_ascii=False)
+    json.dump(multiple_choice, open("tests/multiple_choice.json", "w"), ensure_ascii=False)
+    json.dump(order, open("tests/order.json", "w"), ensure_ascii=False)
+    json.dump(matching, open("tests/matching.json", "w"), ensure_ascii=False)
+    json.dump(other, open("tests/other.json", "w"), ensure_ascii=False)
+
 # print(os.listdir(path="example/tests"))
 
 
